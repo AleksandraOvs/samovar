@@ -259,25 +259,10 @@ function custom_pagination() {
 		return 15;
 	} );
 
-// 	add_filter( 'excerpt_more', 'new_excerpt_more' );
-// function new_excerpt_more( $more ){
-//     global $post;
-//     return '<a class="button black-fill read-more" href="'. get_permalink($post) . '">Читать</a>';
-// }
+	function theme_add_contacts($contactmethods){
+		$contactmethods['telegram'] = 'Telegram';
+		$contactmethods['vk'] = 'VK';
+		return $contactmethods;
+	}
 
-
-/**
- * @snippet       Добавление полей в блок "Контакты" в профилях пользователей
- * @author        Миша Рудрастых
- * @url           https://misha.agency/wordpress/addtitional-methods-user-profiles.html
- */
-add_filter( 'user_contactmethods', 'true_add_contacts', 25 );
- 
-function true_add_contacts( $contactmethods ) {
- 
-	$contactmethods[ 'vk' ] = 'Ваша страница вконтакте';
-	$contactmethods[ 'mobile' ] = 'Номер сотового';
-	$contactmethods[ 'skype' ] = 'Скайп';
-	return $contactmethods;
- 
-}
+	add_filter('user_contactmethods', 'theme_add_contacts', 10, 1);

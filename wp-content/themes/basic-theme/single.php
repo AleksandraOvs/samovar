@@ -45,19 +45,17 @@
 
         <div class="page-section__content">
             <div class="page-section__content__autor">
-            <?php echo get_avatar( $current_user->user_email, 100 ); ?>
-            <?php echo the_author_meta( 'display_name', $user_id = false ); ?>
-            <?php
-            $user_name = get_the_author_meta( 'name');
-            $user_vk = get_the_author_meta( 'vk');
-            $current_user = wp_get_current_user(); // получили объект с данными текущего авторизованного пользователя
- 
-print_r ($current_user->display_name); // получим <p>Вы вошли как admin.</p>
-//$user_skype = get_user_meta( $user_id, 'skype', true );
-?>
 
-<?php echo $user_name . ' - ' . $user_vk; ?>
+            <?php echo get_avatar( get_the_author_meta('ID'), 100, '', '', array('class' => 'author-img')) ?>
+            <h6 class="author-name"><?php echo the_author_meta('display_name')?></h6>
 
+            <?php if ($tg = get_the_author_meta('telegram') ): ?>  
+                      <a href="<?php echo $tg ?>">Telegram-канал</a>
+                      <?php endif; ?>
+
+                      <?php if ($vk = get_the_author_meta('vk') ): ?>  
+                      <a href="<?php echo $vk ?>">Вконтакте</a>
+                      <?php endif; ?>
             </div>
             <div class="page-section__content__editor">
                 <?php the_content() ?>

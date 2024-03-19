@@ -18,7 +18,11 @@ get_header(); ?>
     <ul class="breadcrumbs__list">
         <?php echo true_breadcrumbs(); ?>
     </ul>
-    <h2 class="toleft"><?php echo single_cat_title() ?></h2>
+    <div class="category-header toleft">
+        <p>Вы находитесь в рубрике:</p>
+        <h2><?php echo single_cat_title() ?></h2>
+    </div>
+    
 </div>
 
 <div class="page-container">
