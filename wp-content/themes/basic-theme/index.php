@@ -56,7 +56,7 @@
                         <p>По вашему запросу ничего не найдено</p>
                     <?php endif; ?>
                 </div> <!-- end col -->
-                <?php get_sidebar() ?>
+                <?php //get_sidebar() ?>
 
            
     </section> <!-- end content -->

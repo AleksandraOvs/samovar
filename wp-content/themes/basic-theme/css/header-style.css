@@ -4,8 +4,9 @@ styles for header theme basic
 
 header.header{
     display: grid;
-    grid-template-columns: 60% 1fr 13%;
+    grid-template-columns: 60% 24% 13%;
     align-items: center;
+    column-gap: 1%;
     justify-content: space-between;
     width: 100%;
 }
