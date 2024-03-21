@@ -38,3 +38,13 @@
     url(../fonts/Manrope-Light.woff2) format("woff2");
     font-display: swap;
 }
+
+@font-face {
+  font-family: "Foglihten";
+  font-weight:400;
+  src: local("Foglihten"), 
+  url(../fonts/foglihten6.ttf) format("truetype"), 
+  url(../fonts/foglihten6.woff) format("woff"), 
+  url(../fonts/foglihten6.woff2) format("woff2");
+  font-display: swap;
+}

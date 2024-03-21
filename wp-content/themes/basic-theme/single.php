@@ -45,17 +45,86 @@
 
         <div class="page-section__content">
             <div class="page-section__content__autor">
+                <div class="page-section__content__autor__summary">
+                    <?php
+                if ($autor_photo_id = carbon_get_post_meta(get_the_ID(), 'crb_autor_img')) {
+                ?>
+                    <div class="page-section__content__autor__photo">
+                        <?php
+                        $autor_photo_url = wp_get_attachment_image_url($autor_photo_id, 'full');
+                        ?>
+                        <img src="<?php echo $autor_photo_url; ?>" alt="">
 
-            <?php echo get_avatar( get_the_author_meta('ID'), 100, '', '', array('class' => 'author-img')) ?>
-            <h6 class="author-name"><?php echo the_author_meta('display_name')?></h6>
+                    </div>
 
-            <?php if ($tg = get_the_author_meta('telegram') ): ?>  
-                      <a href="<?php echo $tg ?>">Telegram-канал</a>
-                      <?php endif; ?>
+                <?php
+                }
+                ?>
 
-                      <?php if ($vk = get_the_author_meta('vk') ): ?>  
-                      <a href="<?php echo $vk ?>">Вконтакте</a>
-                      <?php endif; ?>
+                <?php
+
+                if ($autor_photo_id = carbon_get_post_meta(get_the_ID(), 'crb_autor_name')) {
+                ?>
+                <div class="autor-meta">
+                     <h5 class="autor-meta"><?php echo $autor_photo_id; ?></h5>
+                    <?php
+                    if ($autor_about = carbon_get_post_meta(get_the_ID(), 'crb_autor_about')) {
+                        echo '<p class="autor-about">' . $autor_about . '</p>';
+                    }
+                    ?>
+                </div>
+                   
+                <?php
+                }
+                ?>
+                </div>
+                
+
+                <?php
+                if ($coautors = carbon_get_post_meta(get_the_ID(), 'crb_coautors_titles')) {
+                    ?>
+                    <ul class="coautors-titles">
+                        <?php
+                            foreach ($coautors as $coautor){
+                                ?>
+                                <li>
+                                    <span class="coautor-type"><?php  echo $coautor[ 'crb_coautor_titles_head']; ?></span>:
+                                    <span class="coautor-name">
+                                    <?php  echo $coautor[ 'crb_coautor_contacts_name']; ?>
+                                    </span>
+                                </li>
+                                   
+                                <?php
+                            }
+                        ?>
+                    </ul>
+                    <?php
+                }
+                ?>
+
+                <?php
+                if ($messengers = carbon_get_post_meta(get_the_ID(), 'crb_autor_contacts')) {
+                ?>
+                    <ul class="page-section__content__autor__contacts">
+                        <?php
+                        foreach ($messengers as $messenger) {
+                        ?>
+                            <li class="autor-contacts__item">
+                                <a href="<?php echo $messenger['crb_autor_contacts_link']; ?>">
+                                    <?php echo 
+                                    $messenger ['crb_autor_contacts_messenger']
+                                    ?>
+                                </a>
+                            </li>
+                        <?php
+                        }
+                        ?>
+                    </ul>
+                <?php
+                }
+                ?>
+
+
             </div>
             <div class="page-section__content__editor">
                 <?php the_content() ?>
